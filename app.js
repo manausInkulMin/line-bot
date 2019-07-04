@@ -25,7 +25,7 @@ app.post('/webhook', (req, res) => {
   } else if (msg === 'Register Wallet' || msg === 'register wallet') {
     registerAPI(replyToken, 'Register')
   } else if (msg === 'my account' || msg === 'account') {
-    getProfilrUser(replyToken)
+    getProfilrUser(replyToken, 'my account')
   } else if (msg === 'token') {
     getTokenUser(req.body.events[0].replyToken)
   } else {
@@ -229,7 +229,7 @@ function paymentApi(replyToken, text) {
     console.log('status = ' + res.statusCode)
   })
 }
-function getProfilrUser(replyToken) {
+function getProfilrUser(replyToken, text) {
   let headers = {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + configParams.token
@@ -238,7 +238,7 @@ function getProfilrUser(replyToken) {
     replyToken: replyToken,
     messages: [{
       type: 'text',
-      text: profile
+      text: text
     }]
   })
   request.post({
