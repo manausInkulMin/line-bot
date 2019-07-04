@@ -17,7 +17,7 @@ app.post('/webhook', (req, res) => {
   })
   let replyToken = req.body.events[0].replyToken
   let msg = req.body.events[0].message.text
-  console.log('req.body :> ', req.body)
+  // console.log('req.body :> ', req.body)
   if (msg === 'Payment' || msg === 'payment') {
     paymentApi(replyToken, 'Register')
   } else if (msg === 'Register' || msg === 'register') {
